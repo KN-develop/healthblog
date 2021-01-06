@@ -1,0 +1,30 @@
+<template>
+    <BlogSidebarItem title="Категории" class="sidebar__item__categories">
+        <ul>
+            <li>
+                <a href="#">Recipes <span>128</span></a>
+            </li>
+            <li>
+                <a href="#">Dinner <span>32</span></a>
+            </li>
+            <li>
+                <a href="#">Dessert <span>86</span></a>
+            </li>
+            <li class="p-left">
+                <a href="#">Smothie <span>25</span></a>
+            </li>
+            <li class="p-left">
+                <a href="#">Drinks <span>36</span></a>
+            </li>
+            <li class="p-left">
+                <a href="#">Cakes <span>15</span></a>
+            </li>
+            <li>
+                <a href="#">Vegan <span>63</span></a>
+            </li>
+            <li>
+                <a href="#">Weightloss <span>27</span></a>
+            </li>
+        </ul>
+    </BlogSidebarItem>
+</template>

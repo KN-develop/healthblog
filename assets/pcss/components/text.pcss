@@ -1,0 +1,457 @@
+/* Переменые */
+:root {
+  --text-scale-ratio: env(--max-font-scale-ratio);
+
+  /* На меньшей ширине экрана уменьшаем шаг, чтобы минимальный шрифт не был нечитаемым */
+  @media (--less-than-l) {
+    --text-scale-ratio: calc(env(--max-font-scale-ratio) * 1.01);
+  }
+
+  /* Размеры шрифтов */
+  --text-xxxl: env(--max-font-size);
+  --text-xxl: calc(var(--text-xxxl) * var(--text-scale-ratio));
+  --text-xl: calc(var(--text-xxl) * var(--text-scale-ratio));
+  --text-l: calc(var(--text-xl) * var(--text-scale-ratio));
+  --text-m: calc(var(--text-l) * var(--text-scale-ratio));
+  --text-s: calc(var(--text-m) * var(--text-scale-ratio));
+  --text-xs: calc(var(--text-s) * var(--text-scale-ratio));
+
+  /* Заголовки */
+  --h1-font-size: var(--text-xxxl);
+  --h2-font-size: var(--text-xxl);
+  --h3-font-size: var(--text-xl);
+  --h4-font-size: var(--text-l);
+  --h5-font-size: var(--text-m);
+  --h6-font-size: var(--text-s);
+}
+
+/* Заголовки */
+body {
+  font-size: var(--text-s);
+}
+
+/* Заголовки */
+h1 {
+  font-size: var(--h1-font-size);
+}
+h2 {
+  font-size: var(--h2-font-size);
+}
+h3 {
+  font-size: var(--h3-font-size);
+}
+h4 {
+  font-size: var(--h4-font-size);
+}
+h5 {
+  font-size: var(--h5-font-size);
+}
+h6 {
+  font-size: var(--h6-font-size);
+}
+
+.text--xs {
+  font-size: var(--text-xs) !important;
+}
+.text--s {
+  font-size: var(--text-s) !important;
+}
+.text--m {
+  font-size: var(--text-m) !important;
+}
+.text--l {
+  font-size: var(--text-l) !important;
+}
+.text--xl {
+  font-size: var(--text-xl) !important;
+}
+.text--xxl {
+  font-size: var(--text-xxl) !important;
+}
+.text--xxxl {
+  font-size: var(--text-xxxl) !important;
+}
+
+/* Жирный */
+.text--bold {
+  font-weight: bold !important;
+}
+
+/* Нормальный */
+.text--normal {
+  font-weight: normal !important;
+}
+
+.text--muted {
+  color: var(--global-color-muted) !important;
+}
+
+.text--error {
+    color: var(--global-color-error) !important;
+}
+
+/* Врапинг */
+.text--truncate {
+  max-width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.text--break {
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+}
+.text--nowrap {
+  white-space: nowrap;
+}
+
+/* Трансформация */
+.text--uppercase {
+  text-transform: uppercase;
+}
+.text--capitalize {
+  text-transform: capitalize;
+}
+.text--lowercase {
+  text-transform: lowercase;
+}
+
+/* Выравнивание */
+.text--left {
+  text-align: left !important;
+}
+.text--right {
+  text-align: right !important;
+}
+.text--center {
+  text-align: center !important;
+}
+
+/* Вертикальное выравнивание */
+.text--top {
+  vertical-align: top !important;
+}
+.text--middle {
+  vertical-align: middle !important;
+}
+.text--bottom {
+  vertical-align: bottom !important;
+}
+.text--baseline {
+  vertical-align: baseline !important;
+}
+
+
+/** Стили до указанного брякпоинта **/
+.text--xs {
+  &\@xl {
+    @media (--less-than-xl) {
+      font-size: var(--text-xs) !important;
+    }
+  }
+  &\@l {
+    @media (--less-than-l) {
+      font-size: var(--text-xs) !important;
+    }
+  }
+  &\@m {
+    @media (--less-than-m) {
+      font-size: var(--text-xs) !important;
+    }
+  }
+  &\@s {
+    @media (--less-than-s) {
+      font-size: var(--text-xs) !important;
+    }
+  }
+}
+.text--s {
+  &\@xl {
+    @media (--less-than-xl) {
+      font-size: var(--text-s) !important;
+    }
+  }
+  &\@l {
+    @media (--less-than-l) {
+      font-size: var(--text-s) !important;
+    }
+  }
+  &\@m {
+    @media (--less-than-m) {
+      font-size: var(--text-s) !important;
+    }
+  }
+  &\@s {
+    @media (--less-than-s) {
+      font-size: var(--text-s) !important;
+    }
+  }
+}
+.text--m {
+  &\@xl {
+    @media (--less-than-xl) {
+      font-size: var(--text-m) !important;
+    }
+  }
+  &\@l {
+    @media (--less-than-l) {
+      font-size: var(--text-m) !important;
+    }
+  }
+  &\@m {
+    @media (--less-than-m) {
+      font-size: var(--text-m) !important;
+    }
+  }
+  &\@s {
+    @media (--less-than-s) {
+      font-size: var(--text-m) !important;
+    }
+  }
+}
+.text--l {
+  &\@xl {
+    @media (--less-than-xl) {
+      font-size: var(--text-l) !important;
+    }
+  }
+  &\@l {
+    @media (--less-than-l) {
+      font-size: var(--text-l) !important;
+    }
+  }
+  &\@m {
+    @media (--less-than-m) {
+      font-size: var(--text-l) !important;
+    }
+  }
+  &\@s {
+    @media (--less-than-s) {
+      font-size: var(--text-l) !important;
+    }
+  }
+}
+.text--xl {
+  &\@xl {
+    @media (--less-than-xl) {
+      font-size: var(--text-xl) !important;
+    }
+  }
+  &\@l {
+    @media (--less-than-l) {
+      font-size: var(--text-xl) !important;
+    }
+  }
+  &\@m {
+    @media (--less-than-m) {
+      font-size: var(--text-xl) !important;
+    }
+  }
+  &\@s {
+    @media (--less-than-s) {
+      font-size: var(--text-xl) !important;
+    }
+  }
+}
+.text--xxl {
+  &\@xl {
+    @media (--less-than-xl) {
+      font-size: var(--text-xxl) !important;
+    }
+  }
+  &\@l {
+    @media (--less-than-l) {
+      font-size: var(--text-xxl) !important;
+    }
+  }
+  &\@m {
+    @media (--less-than-m) {
+      font-size: var(--text-xxl) !important;
+    }
+  }
+  &\@s {
+    @media (--less-than-s) {
+      font-size: var(--text-xxl) !important;
+    }
+  }
+}
+.text--xxxl {
+  &\@xl {
+    @media (--less-than-xl) {
+      font-size: var(--text-xxxl) !important;
+    }
+  }
+  &\@l {
+    @media (--less-than-l) {
+      font-size: var(--text-xxxl) !important;
+    }
+  }
+  &\@m {
+    @media (--less-than-m) {
+      font-size: var(--text-xxxl) !important;
+    }
+  }
+  &\@s {
+    @media (--less-than-s) {
+      font-size: var(--text-xxxl) !important;
+    }
+  }
+}
+
+/* Выравнивание */
+.text--left {
+  &\@xl {
+    @media (--less-than-xl) {
+      text-align: left !important;
+    }
+  }
+  &\@l {
+    @media (--less-than-l) {
+      text-align: left !important;
+    }
+  }
+  &\@m {
+    @media (--less-than-m) {
+      text-align: left !important;
+    }
+  }
+  &\@s {
+    @media (--less-than-s) {
+      text-align: left !important;
+    }
+  }
+}
+.text--right {
+  &\@xl {
+    @media (--less-than-xl) {
+      text-align: right !important;
+    }
+  }
+  &\@l {
+    @media (--less-than-l) {
+      text-align: right !important;
+    }
+  }
+  &\@m {
+    @media (--less-than-m) {
+      text-align: right !important;
+    }
+  }
+  &\@s {
+    @media (--less-than-s) {
+      text-align: right !important;
+    }
+  }
+}
+.text--center {
+  &\@xl {
+    @media (--less-than-xl) {
+      text-align: center !important;
+    }
+  }
+  &\@l {
+    @media (--less-than-l) {
+      text-align: center !important;
+    }
+  }
+  &\@m {
+    @media (--less-than-m) {
+      text-align: center !important;
+    }
+  }
+  &\@s {
+    @media (--less-than-s) {
+      text-align: center !important;
+    }
+  }
+}
+
+/* Вертикальное выравнивание */
+.text--top {
+  &\@xl {
+    @media (--less-than-xl) {
+      vertical-align: top !important;
+    }
+  }
+  &\@l {
+    @media (--less-than-l) {
+      vertical-align: top !important;
+    }
+  }
+  &\@m {
+    @media (--less-than-m) {
+      vertical-align: top !important;
+    }
+  }
+  &\@s {
+    @media (--less-than-s) {
+      vertical-align: top !important;
+    }
+  }
+}
+.text--middle {
+  &\@xl {
+    @media (--less-than-xl) {
+      vertical-align: middle !important;
+    }
+  }
+  &\@l {
+    @media (--less-than-l) {
+      vertical-align: middle !important;
+    }
+  }
+  &\@m {
+    @media (--less-than-m) {
+      vertical-align: middle !important;
+    }
+  }
+  &\@s {
+    @media (--less-than-s) {
+      vertical-align: middle !important;
+    }
+  }
+}
+.text--bottom {
+  &\@xl {
+    @media (--less-than-xl) {
+      vertical-align: bottom !important;
+    }
+  }
+  &\@l {
+    @media (--less-than-l) {
+      vertical-align: bottom !important;
+    }
+  }
+  &\@m {
+    @media (--less-than-m) {
+      vertical-align: bottom !important;
+    }
+  }
+  &\@s {
+    @media (--less-than-s) {
+      vertical-align: bottom !important;
+    }
+  }
+}
+.text--baseline {
+  &\@xl {
+    @media (--less-than-xl) {
+      vertical-align: baseline !important;
+    }
+  }
+  &\@l {
+    @media (--less-than-l) {
+      vertical-align: baseline !important;
+    }
+  }
+  &\@m {
+    @media (--less-than-m) {
+      vertical-align: baseline !important;
+    }
+  }
+  &\@s {
+    @media (--less-than-s) {
+      vertical-align: baseline !important;
+    }
+  }
+}

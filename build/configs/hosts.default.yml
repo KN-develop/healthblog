@@ -1,0 +1,112 @@
+.common: &common
+  application: sitename
+  proxy_internal_ip: 127.0.0.1
+  repository:
+  writable_mode: chgrp
+  http_group: www-data
+  git_tty: true
+  keep_releases: 5
+  deploy_path: /var/www/{{application}}
+  keeping_path: /var/www/{{application}}/shared
+  forwardAgent: true
+  multiplexing: true
+  shared_dirs:
+    - logs
+    - config/keys
+    - ejabberd-modules
+  log_dirs:
+    - logs/ejabberd
+    - logs/nginx
+  clear_paths:
+    - .idea
+    - .git
+    - .gitignore
+    - README.md
+    - build
+    - deploy.php
+    - dep.bat
+    - dep.sh
+
+  # Параметры подключения к Redis
+  redis.host: 127.0.0.1
+  redis.db: 6
+
+
+dev-ru:
+  <<: *common
+  stage: dev
+  hostname: YOUR_HOST
+  local: true
+  keeping_path: /var/www/{{application}}
+  roles:
+    - ru
+    - sitename
+
+
+dev-en:
+  <<: *common
+  stage: dev
+  hostname: YOUR_HOST
+  local: true
+  keeping_path: /var/www/{{application}}
+  roles:
+    - en
+    - sitename
+
+
+prod-ru:
+  <<: *common
+  application: sitename.com
+  hostname: sitename.com
+  stage: production
+  port: 22
+  roles:
+    - ru
+    - sitename
+
+
+prod-en:
+  <<: *common
+  application: sitename.com
+  hostname: sitename.com
+  stage: production
+  port: 22
+  roles:
+    - en
+    - sitename
+
+prod-de:
+  application: sitename.com
+  hostname: sitename.com
+  <<: *common
+  stage: production
+  port: 22
+  roles:
+    - de
+    - sitename
+
+
+test-ru:
+  <<: *common
+  application: sitename.com
+  hostname: sitename.com
+  stage: testing
+  port: 3322
+  proxy_internal_ip: 10.0.2.110
+  http_group: apache
+  roles:
+    - ru
+    - sitename
+
+
+test-en:
+  <<: *common
+  application: test.com
+  hostname: test.com
+  stage: testing
+  port: 3322
+  proxy_internal_ip: 10.0.2.110
+  http_group: apache
+  roles:
+    - en
+    - sitename

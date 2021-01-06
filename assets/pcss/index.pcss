@@ -1,0 +1,52 @@
+/* Переменные окружения настроены в nuxt.config.js */
+@import './preset/index.pcss';
+@import './components/index.pcss';
+
+html {
+  font-family: var(--global-font-family);
+  font-size: var(--global-root-font-size);
+  line-height: var(--global-line-height);
+  background-color: var(--global-background);
+  color: var(--global-color);
+  min-width: 300px;
+  overflow-x: hidden;
+
+    hr {
+        border: 0;
+        height: 1px;
+        background-image: linear-gradient(to left, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0));
+    }
+
+  @media (--less-than-l) {
+    --global-root-font-size: calc(var(--global-base-font-size) * 15 / 16) !important; /* 1.6rem = 15px */
+  }
+
+  @media (--less-than-m) {
+    --global-root-font-size: calc(var(--global-base-font-size) * 14 / 16) !important; /* 1.6rem = 14px */
+  }
+
+  @media (--less-than-s) {
+    --global-root-font-size: calc(var(--global-base-font-size) * 13 / 16) !important; /* 1.6rem = 13px */
+  }
+
+    @media (--more-than-l) {
+        .page-enter-active, .page-leave-active {
+            transition-property: opacity, transform;
+            transition-duration: .5s;
+        }
+
+        .page-leave-active {
+            transition-property: opacity, transform;
+            transform: translateX(45px);
+        }
+
+        .page-enter {
+            transition-property: opacity, transform;
+            transform: translateX(-45px);
+        }
+
+        .page-enter, .page-leave-active {
+             opacity: 0;
+        }
+    }
+}
