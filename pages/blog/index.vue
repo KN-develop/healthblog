@@ -4,25 +4,25 @@
             <div class="container">
                 <div class="categories__grid__post">
                     <div class="row">
-                        <div class="col-lg-8 col-md-8">
+                        <div class="col-lg-12 col-md-12">
                             <BlogBreadcrumb />
                             <BlogCategoriesList />
-                            <div class="row">
+                            <!--                            <div class="row">
                                 <div class="col-lg-12">
                                     <BlogCategoriesPagination />
                                 </div>
-                            </div>
+                            </div>-->
                         </div>
-                        <BlogSidebar>
+                        <!--                        <BlogSidebar>
                             <BlogSidebarCategories />
                             <BlogSidebarAbout />
-                            <!--
+                            &lt;!&ndash;
                             <BlogSidebarFollow />
                             <BlogSidebarFeature />
                             <BlogSidebarBanner />
                             <BlogSidebarSubscribe />
-                            -->
-                        </BlogSidebar>
+                            &ndash;&gt;
+                        </BlogSidebar>-->
                     </div>
                 </div>
             </div>

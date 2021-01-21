@@ -2,7 +2,7 @@
     <main class="main">
         <BlogMainSlider />
         <AppContainer>
-            <BlogCategories />
+            <!--<BlogCategories />-->
         </AppContainer>
     </main>
 </template>

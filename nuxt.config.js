@@ -151,20 +151,13 @@ export default merge(
             '@nuxtjs/eslint-module',
             '@nuxtjs/pwa',
             'cookie-universal-nuxt',
+            '@nuxtjs/yandex-metrika',
             /*[
                 '@nuxtjs/router',
                 {
                     /!* module options *!/
                 },
             ],*/
-            [
-                '@nuxtjs/yandex-metrika',
-                {
-                    id: 57865369,
-                    webvisor: true,
-                    clickmap: true,
-                },
-            ],
         ],
 
         components: {
@@ -194,7 +187,7 @@ export default merge(
             },
         },*/
         axios: {
-            prefix: '/api',
+            baseURL: 'http://localhost:4000',
         },
 
         /*

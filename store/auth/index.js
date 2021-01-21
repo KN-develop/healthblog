@@ -13,9 +13,21 @@ export const mutations = {
     setUserGuest(state, val) {
         state.userGuest = val;
     },
+    onAuthStateChanged(nextOrObserver, error, completed) {},
 };
 
 export const actions = {
+    async onAuthStateChangedAction(ctx, { authUser, claims }) {
+        if (!authUser) {
+            console.log('not auth');
+            // claims = null
+            // Perform logout operations
+        } else {
+            console.log('auth confirm');
+            // Do something with the authUser and the claims object...
+        }
+    },
+
     /**
      * Авторзация по логину и паролю
      * @param commit

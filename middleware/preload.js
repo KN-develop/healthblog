@@ -1,9 +1,9 @@
-import MockCategoriesList from '~/mocks/MockCategoriesList';
-import MockCategories from '~/mocks/MockCategories';
+export default async function(ctx) {
+    const { store } = ctx;
+    const menu = topMenu;
+    await store.dispatch('blog/fetchPosts');
 
-export default async function({ store }) {
-    store.commit('menu/setTopMenu', topMenu);
-    store.commit('blog/setCategoriesList', MockCategoriesList);
+    store.commit('menu/setTopMenu', menu);
 
     return true;
 }
@@ -20,12 +20,12 @@ const topMenu = [
     {
         title: 'Блог',
         url: '/blog',
-        sublist: MockCategories,
+        //sublist: MockCategories,
     },
-    {
+    /*{
         title: 'Каталог',
         url: '/catalog',
-    },
+    },*/
     {
         title: 'Контакты',
         url: '/contacts',

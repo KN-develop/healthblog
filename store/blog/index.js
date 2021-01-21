@@ -8,6 +8,7 @@ export const state = () => ({
     categoriesList: [],
     currentCategory: null,
     currentPost: null,
+    limit: 10,
 });
 
 export const mutations = {
@@ -19,11 +20,32 @@ export const mutations = {
         state.currentCategory = { href, title };
     },
     setCurrentPost(state, val = {}) {
-        Vue.set(state, 'currentPost', val);
+        const res = {};
+
+        Object.entries(val).map(([key, value]) => {
+            const splitKey = key.split('BlogPost_')[1];
+            console.log({ splitKey });
+            res[splitKey] = value;
+        });
+        Vue.set(state, 'currentPost', res);
     },
 };
 
 export const actions = {
+    async fetchPosts({ commit }, payload = {}) {
+        const { filter = {} } = payload;
+
+        const filterSample = {
+            shift: 2,
+            limit: 14,
+            categories: ['herbs', 'health'],
+        };
+
+        const categoriesList = await this.$axios.get('blog/posts');
+
+        commit('setCategoriesList', categoriesList.data);
+    },
+
     async fetchCurrentPost({ commit }, payload = {}) {
         const id = payload.route.params.id;
 
@@ -31,7 +53,10 @@ export const actions = {
             throw new Error('error');
         }
 
-        commit('setCurrentPost', MockPost);
+        const post = await this.$axios.get('blog/posts/' + id);
+        const curr = post.data[0];
+
+        commit('setCurrentPost', curr);
 
         return void 0;
     },
@@ -52,6 +77,8 @@ export const actions = {
         commit('setCategoriesList', category.list);
         commit('setCurrentCategory', category);
     },
+
+    async loadMore() {},
 };
 
 export const getters = {

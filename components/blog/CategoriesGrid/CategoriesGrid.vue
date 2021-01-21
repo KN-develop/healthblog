@@ -191,11 +191,11 @@
                     </div>
                 </div>
             </div>
-            <div class="col-lg-12 text-center">
+            <!--            <div class="col-lg-12 text-center">
                 <div class="load__more__btn">
-                    <a href="#">Load more</a>
+                    <a href="#" @click.prevent="onClickLoadMore">Загрузить еще</a>
                 </div>
-            </div>
+            </div>-->
         </div>
     </div>
 </template>
@@ -203,7 +203,7 @@
 export default {
     props: {
         list: {
-            type: Object,
+            type: Array,
             default: () => [],
         },
     },
@@ -228,6 +228,12 @@ export default {
             }
 
             return res;
+        },
+    },
+
+    methods: {
+        onClickLoadMore() {
+            this.$store.dispatch('blog/loadMore');
         },
     },
 };

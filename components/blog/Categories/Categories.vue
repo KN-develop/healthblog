@@ -1,8 +1,8 @@
 <template>
     <section class="categories spad">
-        <div class="container">
+        <!--        <div class="container">
             <BlogBestCategories />
-        </div>
+        </div>-->
         <div class="categories__post">
             <div class="container">
                 <div class="row">
@@ -11,7 +11,7 @@
                         <div class="sidebar__item">
                             <BlogSidebarAbout />
                             <!--<BlogSidebarFollow />-->
-                            <BlogSidebarCategories />
+                            <!--<BlogSidebarCategories />-->
                             <!--<BlogSidebarSubscribe />-->
                         </div>
                     </div>
@@ -20,15 +20,3 @@
         </div>
     </section>
 </template>
-<script>
-const url = 'img/sidebar/feature-post.jpg';
-export default {
-    data() {
-        return {
-            style: {
-                'background-image': `url(${url})`,
-            },
-        };
-    },
-};
-</script>

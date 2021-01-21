@@ -8,6 +8,10 @@ export default {
             type: String,
             default: 'Странно, но текста тут почему то нет.',
         },
+        description: {
+            type: String,
+            default: 'Странно, но текста тут почему то нет.',
+        },
         categories: {
             type: Array,
             default: () => [{ title: 'Блог', href: '/blog' }],

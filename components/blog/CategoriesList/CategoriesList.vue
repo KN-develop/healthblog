@@ -1,12 +1,13 @@
 <template>
-    <section>
+    <section class="categories__list">
         <template v-if="theme === 'list'">
             <BlogCategoriesItem
                 v-for="(item, index) in categoriesList"
                 :key="`post-${index}`"
                 :title="item.title"
-                :text="item.text"
-                :href="item.href"
+                :text="item.contentHtml"
+                :description="item.description"
+                :href="item.slug"
                 :bg-image="item.image"
                 :date="item.date"
                 :author="item.author"
@@ -35,3 +36,10 @@ export default {
     },
 };
 </script>
+<style scoped>
+.categories__list {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 24px;
+}
+</style>

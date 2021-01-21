@@ -4,25 +4,25 @@
             <div class="container">
                 <div class="categories__grid__post">
                     <div class="row">
-                        <div class="col-lg-8 col-md-8">
+                        <div class="col-lg-12 col-md-12">
                             <BlogBreadcrumb :list="breadcrumbs" />
                             <BlogCategoriesList />
-                            <div class="row">
+                            <!--                            <div class="row">
                                 <div class="col-lg-12">
                                     <BlogCategoriesPagination />
                                 </div>
-                            </div>
+                            </div>-->
                         </div>
-                        <BlogSidebar>
+                        <!--                        <BlogSidebar>
                             <BlogSidebarCategories />
                             <BlogSidebarAbout />
-                            <!--
+                            &lt;!&ndash;
                             <BlogSidebarFollow />
                             <BlogSidebarFeature />
                             <BlogSidebarBanner />
                             <BlogSidebarSubscribe />
-                            -->
-                        </BlogSidebar>
+                            &ndash;&gt;
+                        </BlogSidebar>-->
                     </div>
                 </div>
             </div>
@@ -31,7 +31,10 @@
 </template>
 <script>
 export default {
-    async asyncData({ app, params, route, error }) {
+    beforeCreate() {
+        this.$router.replace('/blog');
+    },
+    /*async asyncData({ app, params, route, error }) {
         try {
             await app.store.dispatch('blog/fetchCurrentCategory', { route });
 
@@ -57,6 +60,6 @@ export default {
                 message: 'Категория не найдена или сервер не доступен',
             });
         }
-    },
+    },*/
 };
 </script>

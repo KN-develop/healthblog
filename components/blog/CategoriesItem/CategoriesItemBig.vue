@@ -12,15 +12,15 @@
             </ul>
             <span class="post__label" v-else-if="categories.length === 1">{{ categories[0].title }}</span>
             <h3>
-                <NuxtLink :to="href">{{ title }}</NuxtLink>
+                <NuxtLink :to="'/blog/post/' + href">{{ title }}</NuxtLink>
             </h3>
             <ul class="post__widget">
                 <li>
                     автор: <span>{{ author }}</span>
                 </li>
-                <li>на чтение {{ readTime }}</li>
+                <!--                <li>на чтение {{ readTime }}</li>-->
             </ul>
-            <p>{{ text }}</p>
+            <p>{{ description }}</p>
 
             <NuxtLink :to="href" class="primary-btn">Читать</NuxtLink>
         </div>
