@@ -9,7 +9,7 @@
                 :description="item.description"
                 :href="item.slug"
                 :bg-image="item.image"
-                :date="item.date"
+                :date="new Date(item.date)"
                 :author="item.author"
                 :read-time="item.readTime"
                 :categories="item.categories"

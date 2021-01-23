@@ -4,11 +4,16 @@ import jwtDecode from 'jwt-decode';
 export const state = () => ({
     auth: false,
     userGuest: false,
+    token: null,
 });
 
 export const mutations = {
     setAuth(state, payload) {
         state.auth = payload;
+    },
+    setToken(state, payload) {
+        state.token = payload;
+        state.auth = true;
     },
     setUserGuest(state, val) {
         state.userGuest = val;
@@ -30,31 +35,22 @@ export const actions = {
 
     /**
      * Авторзация по логину и паролю
-     * @param commit
-     * @param state
-     * @param formData: Array
-     * @returns {Promise<void>}
      */
     async authWithPass({ commit, state }, payload) {
-        const res = await this.$axios({
-            method: 'post',
-            url: '',
-            data: payload.data,
-        });
+        const [username, password] = payload.data;
 
-        if (res.data.response_code === 200) {
-            commit('setAuth', true);
-        }
-        const token = res.headers['json-web-token'];
-        this.app.$cookies.set('authorization', token);
+        const res = await this.$axios.$post('/auth/login', { username, password });
 
-        if (payload.remember) {
-            const decode = jwtDecode(token);
-            this.app.$cookies.set('login', decode.username);
+        console.log({ res });
+
+        if ('success' === res.status) {
+            const token = res.data.access_token;
+            commit('setToken', token);
+
+            return true;
         }
 
-        global.authResult = res;
-        return res;
+        return false;
     },
 
     /**
@@ -84,7 +80,7 @@ export const actions = {
     },
 
     async authGuest({ commit }) {
-        const guestId = `guest${Math.floor(Math.random() * (10000 - 1000 + 1)) + 1000}`;
+        /*const guestId = `guest${Math.floor(Math.random() * (10000 - 1000 + 1)) + 1000}`;
         const res = await this.$axios({
             method: 'post',
             url: '',
@@ -95,7 +91,7 @@ export const actions = {
         commit('setUserGuest', true);
 
         global.authResult = res;
-        return res;
+        return res;*/
     },
 
     /**
@@ -133,6 +129,9 @@ export const actions = {
 export const getters = {
     getAuth(state) {
         return state.auth;
+    },
+    getToken(state) {
+        return state.token;
     },
     getUserGuest(state) {
         return state.userGuest;

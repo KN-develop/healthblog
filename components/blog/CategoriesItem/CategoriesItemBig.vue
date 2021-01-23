@@ -1,11 +1,6 @@
 <template>
     <div class="categories__post__item categories__post__item--large">
-        <div class="categories__post__item__pic set-bg" :style="`background-image: url(${bgImage})`">
-            <div class="post__meta" v-if="getDate">
-                <h4>{{ getDate.day }}</h4>
-                <span>{{ getDate.month }}</span>
-            </div>
-        </div>
+        <div class="categories__post__item__pic set-bg" :style="`background-image: url(${bgImage})`"></div>
         <div class="categories__post__item__text">
             <ul class="post__label--large" v-if="categories.length > 1">
                 <li v-for="item in categories">{{ item.title }}</li>
@@ -15,6 +10,9 @@
                 <NuxtLink :to="'/blog/post/' + href">{{ title }}</NuxtLink>
             </h3>
             <ul class="post__widget">
+                <li>
+                    <span>{{ date.toLocaleString().split(',')[0] }}</span>
+                </li>
                 <li>
                     автор: <span>{{ author }}</span>
                 </li>

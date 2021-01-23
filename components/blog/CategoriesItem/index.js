@@ -1,4 +1,10 @@
 export default {
+    data() {
+        return {
+            monthEng: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Okt', 'Dec'],
+            monthRus: ['Янв', 'Фев', 'Март', 'Апр', 'Май', 'Июнь', 'Июль', 'Авг', 'Сеп', 'Окт', 'Дек'],
+        };
+    },
     props: {
         title: {
             type: String,
@@ -29,7 +35,7 @@ export default {
             default: 'Admin',
         },
         date: {
-            type: Number,
+            type: Date,
         },
         readTime: {
             type: String,
@@ -39,8 +45,10 @@ export default {
 
     computed: {
         getDate() {
-            const dateObject = this.date && new Date(this.date);
-            return dateObject ? {} : null;
+            return {
+                day: this.date.getDate(),
+                month: this.monthRus[this.date.getMonth()],
+            };
         },
     },
 };

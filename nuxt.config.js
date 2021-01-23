@@ -169,6 +169,11 @@ export default merge(
                     extension: ['vue'],
                 },
                 {
+                    path: '~/components/admin/',
+                    prefix: 'Admin',
+                    extension: ['vue'],
+                },
+                {
                     path: '~/components/common/',
                     prefix: 'Common',
                     extension: ['vue'],

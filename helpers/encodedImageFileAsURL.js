@@ -1,5 +1,6 @@
 export default (inputElement, callback) => {
-    const filesSelected = inputElement.files;
+    const filesSelected = Object.values(inputElement.files);
+    console.log({ filesSelected });
 
     filesSelected.forEach(file => {
         const fileReader = new FileReader();

@@ -6,6 +6,7 @@
         :tags="this.post.tags"
         :author="this.post.author"
         :image="this.post.image"
+        :date="new Date(this.post.date)"
     />
 </template>
 <script>

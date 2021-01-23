@@ -4,7 +4,7 @@
         <h2 class="app-login__title">
             Вход
         </h2>
-        <div class="app-login__social">
+        <!--        <div class="app-login__social">
             <div class="app-login__subtitle">
                 Через соцсети:
             </div>
@@ -31,15 +31,15 @@
                     </nuxt-link>
                 </li>
             </app-flex>
-        </div>
+        </div>-->
 
-        <form novalidate="novalidate" class="app-login__form" @submit.prevent="onAuth">
+        <form novalidate="novalidate" class="app-login__form" @submit.prevent="onAuth" style="min-width: 300px">
             <div class="app-login__subtitle">
                 С помощью e-mail:<span class="text--error" v-if="!valid">&nbsp;Неверный логин или пароль</span>
             </div>
             <app-text-input
                 :name="'email'"
-                :type="'email'"
+                :type="'text'"
                 :id="'auth-email'"
                 :required="true"
                 :label="'Логин или электронная почта'"
@@ -57,6 +57,7 @@
                 @input="inputPassword"
                 ref="authPass"
             />
+            <!--
 
             <app-flex class="app-login__links" space-between middle>
                 <app-checkbox
@@ -68,18 +69,21 @@
                 />
                 <nuxt-link :to="'#'">Забыли пароль?</nuxt-link>
             </app-flex>
+-->
 
             <div class="app-login__button">
                 <app-button type="submit" class="text--m --orange">
                     <slot><span>Войти</span></slot>
                 </app-button>
-                <a class="app-login__toggle-popup" @click.prevent="onToggleForm" href="#">Регистрация</a>
+                <!--<a class="app-login__toggle-popup" @click.prevent="onToggleForm" href="#">Регистрация</a>-->
             </div>
         </form>
+        <!--
         <div class="app-login__desc">
             Регистрируясь на сайте, вы принимаете условия
             <nuxt-link :to="'#'">пользовательского соглашения</nuxt-link> и подтверждаете свое совершеннолетие.
         </div>
+        -->
     </div>
 </template>
 
@@ -154,13 +158,19 @@ export default {
                         data: [this.email, this.password],
                         remember: this.rememberUser,
                     });
-                    await this.$store.dispatch('customer/fetchCustomerData');
+                    //await this.$store.dispatch('customer/fetchCustomerData');
                     this.onClosePopup();
+                    this.$emit('auth-true');
                 } catch (e) {
                     this.valid = false;
                 }
             }
         },
+    },
+    beforeMount() {
+        if (this.$store.getters['auth/getAuth']) {
+            this.$emit('auth-true');
+        }
     },
 };
 </script>

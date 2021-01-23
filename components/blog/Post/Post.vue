@@ -5,18 +5,17 @@
             <div class="row d-flex justify-content-center">
                 <div class="col-lg-8">
                     <div class="single-post__title">
-                        <!--
-                        <div class="single-post__title__meta">
-                            <h2>08</h2>
-                            <span>Aug</span>
-                        </div>
-                        -->
+                        <!--                        <div class="single-post__title__meta">
+                            <h2>{{ getDate.day }}</h2>
+                            <span>{{ getDate.month }}</span>
+                        </div>-->
                         <div class="single-post__title__text">
                             <ul class="label" v-if="categories">
                                 <li v-for="item in categories" :key="`category-${item}`">{{ item }}</li>
                             </ul>
                             <h4>{{ title }}</h4>
                             <ul class="widget">
+                                <li>{{ date.toLocaleString().split(',')[0] }}</li>
                                 <li>автор: {{ author }}</li>
                             </ul>
                         </div>
@@ -171,6 +170,12 @@
 </template>
 <script>
 export default {
+    data() {
+        return {
+            monthEng: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Okt', 'Dec'],
+            monthRus: ['Янв', 'Фев', 'Март', 'Апр', 'Май', 'Июнь', 'Июль', 'Авг', 'Сеп', 'Окт', 'Дек'],
+        };
+    },
     props: {
         title: {
             type: String,
@@ -192,6 +197,17 @@ export default {
         },
         tags: {
             type: Array,
+        },
+        date: {
+            type: Date,
+        },
+    },
+    computed: {
+        getDate() {
+            return {
+                day: this.date.getDate(),
+                month: this.monthRus[this.date.getMonth()],
+            };
         },
     },
 };
