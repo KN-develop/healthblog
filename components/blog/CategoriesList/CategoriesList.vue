@@ -38,8 +38,8 @@ export default {
 </script>
 <style scoped>
 .categories__list {
-    display: grid;
+    /*display: grid;
     grid-template-columns: 1fr 1fr;
-    grid-gap: 24px;
+    grid-gap: 24px;*/
 }
 </style>

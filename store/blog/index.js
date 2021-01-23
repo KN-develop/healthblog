@@ -24,7 +24,6 @@ export const mutations = {
 
         Object.entries(val).map(([key, value]) => {
             const splitKey = key.split('BlogPost_')[1];
-            console.log({ splitKey });
             res[splitKey] = value;
         });
         Vue.set(state, 'currentPost', res);
